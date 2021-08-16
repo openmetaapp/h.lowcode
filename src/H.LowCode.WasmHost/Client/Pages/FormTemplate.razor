@@ -1,0 +1,17 @@
+﻿@page "/form"
+
+@using H.LowCode.JsonSchema.RenderEngine;
+@using Microsoft.AspNetCore.Components.Rendering;
+
+<h3>Form Template</h3>
+
+@CreateDynamicComponent()
+
+@code {
+    private RenderFragment CreateDynamicComponent() => builder =>
+    {
+        builder.OpenComponent(0, typeof(SurveyPrompt));
+        builder.AddAttribute(1, "Title", "动态渲染-" + new Random().Next());
+        builder.CloseComponent();
+    };
+}
