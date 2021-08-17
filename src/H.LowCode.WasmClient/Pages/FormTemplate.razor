@@ -1,0 +1,27 @@
+﻿@page "/form/{Id}"
+
+@using H.LowCode.RenderEngine;
+@using Newtonsoft.Json.Schema;
+@inject HttpClient Http
+
+<h3>Form Template</h3>
+
+@RenderFragment
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    public RenderFragment RenderFragment { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var jSchema = await Http.GetFromJsonAsync<object>($"jsonschema/form/{Id}.json");
+        JSchema jsonSchema = JSchema.Parse(jSchema.ToString());
+
+        JsonSchemaRender render = new JsonSchemaRender();
+        RenderFragment = render.Render(jsonSchema, string.Empty);
+
+        StateHasChanged();
+    }
+}
