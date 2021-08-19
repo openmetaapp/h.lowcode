@@ -1,3 +1,6 @@
+using H.LowCode.RenderEngine;
+using H.LowCode.RenderEngine.AntBlazor;
+using H.LowCode.RenderEngine.Html;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +21,9 @@ namespace H.LowCode.WasmClient
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+            builder.Services.AddScoped<IRender, HtmlRender>();
+            //builder.Services.AddScoped<IRender, AntBlazorRender>();
 
             await builder.Build().RunAsync();
         }

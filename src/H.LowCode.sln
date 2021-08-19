@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31129.286
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.LowCode.Utility", "H.LowCode.Utility\H.LowCode.Utility.csproj", "{E5401D56-4C54-45B7-AB1B-2C1FF5F6B882}"
 EndProject
@@ -13,7 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Render", "03 Render", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.LowCode.RenderEngine", "H.LowCode.RenderEngine\H.LowCode.RenderEngine.csproj", "{47EE6944-D5F8-46CD-A552-29A237BE87BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.LowCode.WasmClient", "H.LowCode.WasmClient\H.LowCode.WasmClient.csproj", "{D429FAD4-DC5F-418A-9E95-81AB37B814DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.LowCode.WasmClient", "H.LowCode.WasmClient\H.LowCode.WasmClient.csproj", "{D429FAD4-DC5F-418A-9E95-81AB37B814DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.LowCode.RenderEngine.Html", "H.LowCode.RenderEngine.Html\H.LowCode.RenderEngine.Html.csproj", "{080EBED7-FD5D-4092-874D-6431FC8B9E2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.LowCode.RenderEngine.AntBlazor", "H.LowCode.RenderEngine.AntBlazor\H.LowCode.RenderEngine.AntBlazor.csproj", "{F4DCCF49-7D2D-4359-8D48-09F6167E1AA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +41,14 @@ Global
 		{D429FAD4-DC5F-418A-9E95-81AB37B814DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D429FAD4-DC5F-418A-9E95-81AB37B814DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D429FAD4-DC5F-418A-9E95-81AB37B814DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080EBED7-FD5D-4092-874D-6431FC8B9E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080EBED7-FD5D-4092-874D-6431FC8B9E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080EBED7-FD5D-4092-874D-6431FC8B9E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080EBED7-FD5D-4092-874D-6431FC8B9E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4DCCF49-7D2D-4359-8D48-09F6167E1AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4DCCF49-7D2D-4359-8D48-09F6167E1AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4DCCF49-7D2D-4359-8D48-09F6167E1AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4DCCF49-7D2D-4359-8D48-09F6167E1AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +57,8 @@ Global
 		{E5401D56-4C54-45B7-AB1B-2C1FF5F6B882} = {899D26A3-3A92-4ADE-A548-1618C738AA97}
 		{C7764704-B863-49ED-80AA-CAC8C8A1C1A9} = {899D26A3-3A92-4ADE-A548-1618C738AA97}
 		{47EE6944-D5F8-46CD-A552-29A237BE87BD} = {89FE3DE3-2E58-4835-A476-CA2E309A1B3F}
+		{080EBED7-FD5D-4092-874D-6431FC8B9E2A} = {89FE3DE3-2E58-4835-A476-CA2E309A1B3F}
+		{F4DCCF49-7D2D-4359-8D48-09F6167E1AA2} = {89FE3DE3-2E58-4835-A476-CA2E309A1B3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8C26757-CDED-4779-94DE-C0D4929F64C2}

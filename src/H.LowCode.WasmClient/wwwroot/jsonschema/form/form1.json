@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "string": {
-      "title": "字符串",
+      "title": "姓名",
       "type": "string",
       "required": true
     },

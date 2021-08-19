@@ -1,6 +1,4 @@
-﻿using H.LowCode.RenderEngine.PageRender;
-using Microsoft.AspNetCore.Components;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
@@ -10,17 +8,9 @@ using System.Threading.Tasks;
 
 namespace H.LowCode.RenderEngine
 {
-    public class JsonSchemaRender
+    public static class JsonSchemaHelper
     {
-        public RenderFragment Render(JSchema jsonSchema, string jsonData)
-        {
-            //ValidateJsonSchema(jsonSchema, jsonData);
-
-            FormRender render = new FormRender();
-            return render.Render(jsonSchema);
-        }
-
-        private bool ValidateJsonSchema(JSchema jsonSchema, string jsonData)
+        public static bool ValidateJsonSchema(JSchema jsonSchema, string jsonData)
         {
             if (jsonSchema == null)
                 return false;

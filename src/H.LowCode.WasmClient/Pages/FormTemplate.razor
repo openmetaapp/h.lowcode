@@ -3,6 +3,7 @@
 @using H.LowCode.RenderEngine;
 @using Newtonsoft.Json.Schema;
 @inject HttpClient Http
+@inject IRender render
 
 <h3>Form Template</h3>
 
@@ -19,7 +20,6 @@
         var jSchema = await Http.GetFromJsonAsync<object>($"jsonschema/form/{Id}.json");
         JSchema jsonSchema = JSchema.Parse(jSchema.ToString());
 
-        JsonSchemaRender render = new JsonSchemaRender();
         RenderFragment = render.Render(jsonSchema, string.Empty);
 
         StateHasChanged();

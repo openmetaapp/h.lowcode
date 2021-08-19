@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\H.LowCode.RenderEngine.AntBlazor\H.LowCode.RenderEngine.AntBlazor.csproj" />
+    <ProjectReference Include="..\H.LowCode.RenderEngine.Html\H.LowCode.RenderEngine.Html.csproj" />
     <ProjectReference Include="..\H.LowCode.RenderEngine\H.LowCode.RenderEngine.csproj" />
   </ItemGroup>
 
