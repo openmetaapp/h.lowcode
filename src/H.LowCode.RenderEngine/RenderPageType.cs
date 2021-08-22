@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace H.LowCode.RenderEngine.Html.PageRender
+namespace H.LowCode.RenderEngine
 {
-    internal class DefaultRender
+    public enum PageRenderType
     {
-
+        Form,
+        Table,
+        Chart
     }
 }

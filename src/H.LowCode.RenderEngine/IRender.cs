@@ -11,6 +11,6 @@ namespace H.LowCode.RenderEngine
 {
     public interface IRender
     {
-        RenderFragment Render(JSchema jsonSchema, string jsonData);
+        RenderFragment Render(JSchema jsonSchema, PageRenderType pageRenderType);
     }
 }

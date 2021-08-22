@@ -1,9 +1,27 @@
 ﻿@page "/form/{Id}"
 
-@using H.LowCode.RenderEngine;
-@using Newtonsoft.Json.Schema;
 @inject HttpClient Http
 @inject IRender render
+
+<style scoped>
+.field {
+    width: 100%;
+    height: 40px;
+    margin: 5px 10px;
+    display: inline-block;
+}
+
+    .field .field-label {
+        width: 100px;
+        display: inline-block;
+        text-align: right;
+    }
+
+    .field .field-value {
+        height: 30px;
+        width: 380px;
+    }
+</style>
 
 <h3>Form Template</h3>
 
@@ -17,11 +35,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var jSchema = await Http.GetFromJsonAsync<object>($"jsonschema/form/{Id}.json");
-        JSchema jsonSchema = JSchema.Parse(jSchema.ToString());
+        var jSchema = await Http.GetFromJsonAsync<object>($"jsonschema/form/{Id}.json?_={DateTime.Now.Ticks}");
+        var jsonSchema = JSchema.Parse(jSchema.ToString());
 
-        RenderFragment = render.Render(jsonSchema, string.Empty);
-
-        StateHasChanged();
+        RenderFragment = render.Render(jsonSchema, PageRenderType.Form);
     }
 }

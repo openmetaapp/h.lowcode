@@ -1,39 +1,62 @@
-﻿using H.LowCode.RenderEngine.Html.ElementRender;
+﻿using H.LowCode.RenderEngine.Html.BasicComponent;
 using Microsoft.AspNetCore.Components;
 using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace H.LowCode.RenderEngine.Html.PageRender
 {
-    internal class FormRender
+    internal class FormRender : HtmlRender
     {
+        private static bool _isInitElementRenders = false;
+        private static List<ElementRenderBase> _elementRenders = new List<ElementRenderBase>();
+
+        public FormRender()
+        {
+            InitElementRenders();
+        }
+
         public RenderFragment Render(JSchema jsonSchema)
         {
             return CreateDynamicComponent(jsonSchema);
         }
 
-        private RenderFragment CreateDynamicComponent() => builder =>
-        {
-            builder.OpenElement(0, "h3");
-            builder.AddContent(1, "动态渲染: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            builder.CloseElement();
-        };
-
         private RenderFragment CreateDynamicComponent(JSchema jsonSchema) => builder =>
         {
             foreach (var kv in jsonSchema.Properties)
             {
-                string elementType = kv.Value.Type.ToString().ToLower();
-                if (ElementTypeConst.ElementTypeDic.TryGetValue(elementType, out Type elementRenderType))
+                //bool isCanRender = false;
+                foreach (var elementRender in _elementRenders)
                 {
-                    ElementRenderBase elementRender = (ElementRenderBase)Activator.CreateInstance(elementRenderType);
+                    if (!elementRender.CanRender(kv.Value))
+                        continue;
 
-                    elementRender.Render(builder, kv.Value, CreateDynamicComponent);
+                    builder.OpenElement(0, "div");
+                    builder.AddAttribute(1, "class", "field");
+                    elementRender.Render(builder, kv.Key, kv.Value, CreateDynamicComponent);
+                    builder.CloseElement();
+
+                    //isCanRender = true;
+                    break;  //可渲染的组件只有一个，渲染后结束遍历, 其他 ElementRender 不再判断是否可渲染
                 }
-                else
-                    throw new ArgumentOutOfRangeException($"参数不合法");
+                //if (!isCanRender)
+                //    throw new ArgumentOutOfRangeException($"参数不合法");
             }
         };
+
+        private void InitElementRenders()
+        {
+            if (_isInitElementRenders)
+                return;
+
+            var types = typeof(HtmlRender).Assembly.GetTypes().Where(t => typeof(ElementRenderBase).IsAssignableFrom(t));
+            foreach (var elementType in types)
+            {
+                _elementRenders.Add((ElementRenderBase)Activator.CreateInstance(elementType));
+            }
+
+            _isInitElementRenders = true;
+        }
     }
 }

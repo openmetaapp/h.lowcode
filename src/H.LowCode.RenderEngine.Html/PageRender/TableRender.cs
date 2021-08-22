@@ -12,7 +12,7 @@ namespace H.LowCode.RenderEngine.Html.PageRender
     {
         public RenderFragment Render(JSchema jsonSchema)
         {
-            return null;
+            throw new NotImplementedException();
         }
     }
 }
