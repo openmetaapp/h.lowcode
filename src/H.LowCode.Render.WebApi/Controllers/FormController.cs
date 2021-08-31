@@ -1,5 +1,4 @@
-﻿using H.LowCode.Model;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -20,9 +19,9 @@ namespace H.LowCode.Render.WebApi.Controllers
         }
 
         [HttpGet]
-        public FormModel Get(string id)
+        public object Get(string id)
         {
-            return new FormModel();
+            return null;
         }
 
         [HttpPost]

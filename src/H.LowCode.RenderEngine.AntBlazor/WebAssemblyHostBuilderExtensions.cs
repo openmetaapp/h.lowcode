@@ -13,6 +13,8 @@ namespace H.LowCode.RenderEngine.AntBlazor
         public static void AddAntBlazorRenderEngine(this WebAssemblyHostBuilder builder)
         {
             builder.Services.AddScoped<IRender, AntBlazorRender>();
+
+            builder.Services.AddAntDesign();
         }
     }
 }
